@@ -1,0 +1,54 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: 'en' %}
+{% assign t = site.data.i18n[lang] %}
+
+<!-- Project Hero -->
+<header data-aos="fade-up" class="mb-24">
+<div class="max-w-4xl">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-4 block">{{ page.version }}</span>
+<h1 class="font-headline text-6xl md:text-8xl lg:text-9xl leading-tight mb-8 text-on-surface">{{ page.title }}</h1>
+<div class="flex flex-wrap gap-4 mb-8">
+{% if page.metric1_label %}
+<div class="px-4 py-2 bg-surface-container-highest">
+<span class="font-label text-[9px] tracking-widest uppercase opacity-60">{{ page.metric1_label }}</span>
+<span class="block font-body text-sm">{{ page.metric1_val }}</span>
+</div>
+{% endif %}
+{% if page.metric2_label %}
+<div class="px-4 py-2 bg-surface-container-highest">
+<span class="font-label text-[9px] tracking-widest uppercase opacity-60">{{ page.metric2_label }}</span>
+<span class="block font-body text-sm">{{ page.metric2_val }}</span>
+</div>
+{% endif %}
+</div>
+</div>
+</header>
+
+<!-- Project Content -->
+<article data-aos="fade-up" class="max-w-4xl">
+<div class="prose prose-lg">
+{{ content }}
+</div>
+</article>
+
+<!-- Back to Work + CTA -->
+<section data-aos="fade-up" class="mt-48 py-24 border-t border-outline-variant/10">
+<div class="max-w-4xl flex flex-col md:flex-row justify-between items-center gap-8">
+<a href="{{ site.baseurl }}{% if lang == 'es' %}/es{% endif %}/" class="text-on-surface-variant hover:text-secondary transition-colors flex items-center gap-4">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+{{ t.work }}
+</a>
+<div class="flex gap-4">
+<a href="{{ site.baseurl }}/assets/CV_Boniche_Luis_java.pdf" target="_blank" rel="noopener noreferrer" class="bg-surface-container-highest text-on-surface px-8 py-4 font-body text-xs uppercase tracking-widest hover:bg-secondary-container hover:text-on-secondary-container transition-colors">
+Download CV
+</a>
+<a href="#contact" class="bg-secondary text-on-secondary px-8 py-4 font-body text-xs uppercase tracking-widest hover:bg-secondary-dim transition-colors">
+{{ t.initiate }}
+</a>
+</div>
+</div>
+</section>
+
+{% include contact-form.html %}

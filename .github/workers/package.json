@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-contact-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "worker.js",
+  "devDependencies": {
+    "wrangler": "^4.80.0"
+  }
+}

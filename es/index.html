@@ -1,0 +1,38 @@
+---
+layout: default
+title: Inicio
+lang: es
+---
+{% assign t = site.data.i18n[page.lang] %}
+<!-- Hero Section -->
+<header data-aos="fade-up" class="mb-32 grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-8">
+<h1 class="font-headline text-6xl md:text-8xl leading-tight tracking-tight mb-8">
+    Ingeniero de <span class="italic font-light opacity-80 underline decoration-1 underline-offset-8">Datos</span>
+</h1>
+<p class="font-body text-xl max-w-xl opacity-70 leading-relaxed text-justify-architectural">
+    Profesional combinando Ingeniería en Sistemas con amplia experiencia en analítica, validación de datos y procesos ETL. Especializado en transformar datos operativos de extremo a extremo para soportar decisiones de negocio.
+</p>
+</div>
+<div class="md:col-span-4 flex flex-col justify-end items-end gap-2 border-l border-outline-variant/20 pl-8">
+<div class="font-label text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">Competencias Clave</div>
+<div class="text-right font-headline italic text-xl">Calidad y Gobierno de Datos</div>
+<div class="text-right font-headline italic text-xl">BI y Analítica Avanzada</div>
+<div class="text-right font-headline italic text-xl">Procesamiento de Datos Cloud</div>
+</div>
+</header>
+<!-- Project Grid -->
+{% include project-grid.html lang=page.lang %}
+<!-- CTA Section -->
+<section data-aos="fade-up" class="mt-48 py-24 border-t border-outline-variant/10">
+<div class="max-w-3xl">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-8 block">{{ t.open_collab }}</span>
+<h3 class="font-headline text-5xl md:text-7xl mb-12 leading-tight">
+    Construyamos algo <span class="italic">indestructible</span>.
+</h3>
+<a href="{{ site.baseurl }}/es/contact/" class="bg-surface-container-highest text-on-surface px-12 py-5 font-body text-sm uppercase tracking-widest inline-flex items-center gap-4 hover:bg-secondary-container hover:text-on-secondary-container transition-colors duration-300">
+    {{ t.initiate }}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+</section>

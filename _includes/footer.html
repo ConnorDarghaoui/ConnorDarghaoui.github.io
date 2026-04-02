@@ -1,0 +1,15 @@
+{% assign lang = page.lang | default: 'en' %}{% assign t = site.data.i18n[lang] %}
+<footer class="w-full border-t border-[#2d3435]/5 bg-[#f9f9f9]" id="contact">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 w-full gap-4">
+    <div class="flex flex-col gap-1">
+        <span class="text-xs font-bold text-[#2d3435] uppercase tracking-widest">LUIS BONICHE</span>
+        <span class="font-mono text-[10px] tracking-widest uppercase text-[#5f5e5e]">{{ t.footer_text }}</span>
+        <a href="mailto:luisboniche@yandex.com" class="font-mono text-[10px] tracking-widest lowercase text-[#5f5e5e] hover:text-[#4c6177] transition-colors mt-1">luisboniche@yandex.com</a>
+    </div>
+    <div class="flex gap-8">
+        <a class="font-mono text-[10px] tracking-widest uppercase text-[#5f5e5e] hover:text-[#4c6177] transition-colors" href="https://www.linkedin.com/in/lboniche/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="font-mono text-[10px] tracking-widest uppercase text-[#5f5e5e] hover:text-[#4c6177] transition-colors" href="https://github.com/ConnorDarghaoui" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="font-mono text-[10px] tracking-widest uppercase text-[#5f5e5e] hover:text-[#4c6177] transition-colors" href="{{ site.baseurl }}/sitemap.xml" target="_blank" rel="noopener noreferrer">Sitemap</a>
+    </div>
+</div>
+</footer>

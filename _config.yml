@@ -1,0 +1,34 @@
+title: Luis Boniche
+description: "Data Engineer & Systems Architect — specializing in data quality, ETL pipelines, and analytics."
+author:
+  name: Luis Boniche
+  email: luisboniche@yandex.com
+baseurl: ""
+url: "https://connordarghaoui.github.io"
+social:
+  links:
+    - https://www.linkedin.com/in/lboniche/
+    - https://github.com/ConnorDarghaoui
+excerpt_separator: "<!--more-->"
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+highlighter: rouge
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/
+  - bun.lock
+  - CONTACT_SETUP.md
+  - NEXT_STEPS.md
+  - .github/

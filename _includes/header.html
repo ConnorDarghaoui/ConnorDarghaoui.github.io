@@ -1,0 +1,43 @@
+{% assign lang = page.lang | default: 'en' %}
+{% assign t = site.data.i18n[lang] %}
+{% assign clean_path = page.url | remove_first: '/es' %}
+{% if clean_path == '' %}{% assign clean_path = '/' %}{% endif %}
+<nav class="fixed top-0 w-full z-50 bg-[#f9f9f9]/80 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-none">
+    <a href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/" class="text-xl font-medium tracking-tighter font-headline text-[#2d3435]">
+        LUIS BONICHE
+    </a>
+    <div class="hidden md:flex gap-12 items-center">
+        <a class="{% if page.url == '/' or page.url == '/es/' %}text-[#4c6177] border-b border-[#4c6177] pb-1{% else %}text-[#2d3435]/60 hover:text-[#2d3435]{% endif %} font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/">{{ t.work }}</a>
+        <a class="{% if page.url contains 'about' %}text-[#4c6177] border-b border-[#4c6177] pb-1{% else %}text-[#2d3435]/60 hover:text-[#2d3435]{% endif %} font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/about/">{{ t.about }}</a>
+        <a class="{% if page.url contains 'contact' %}text-[#4c6177] border-b border-[#4c6177] pb-1{% else %}text-[#2d3435]/60 hover:text-[#2d3435]{% endif %} font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/contact/">{{ t.contact }}</a>
+        <a class="text-[#2d3435]/60 hover:text-[#2d3435] font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}/assets/CV_Boniche_Luis_java.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <div class="flex gap-2 ml-4 border-l border-outline-variant/30 pl-4">
+            <a href="{{ site.baseurl }}{{ clean_path }}" class="text-xs uppercase tracking-widest {% if page.lang == 'en' or page.lang == nil %}text-[#2d3435] font-bold{% else %}text-[#2d3435]/60{% endif %}">EN</a>
+            <a href="{{ site.baseurl }}/es{{ clean_path }}" class="text-xs uppercase tracking-widest {% if page.lang == 'es' %}text-[#2d3435] font-bold{% else %}text-[#2d3435]/60{% endif %}">ES</a>
+        </div>
+    </div>
+    <div class="flex items-center gap-4 md:hidden">
+        <div class="flex gap-2">
+            <a href="{{ site.baseurl }}{{ clean_path }}" class="text-xs uppercase tracking-widest {% if page.lang == 'en' or page.lang == nil %}text-[#2d3435] font-bold{% else %}text-[#2d3435]/60{% endif %}">EN</a>
+            <a href="{{ site.baseurl }}/es{{ clean_path }}" class="text-xs uppercase tracking-widest {% if page.lang == 'es' %}text-[#2d3435] font-bold{% else %}text-[#2d3435]/60{% endif %}">ES</a>
+        </div>
+        <button id="mobile-menu-btn" aria-label="Toggle navigation" aria-expanded="false" class="text-[#2d3435] p-1">
+            <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+</div>
+<!-- Mobile Menu Panel -->
+<div id="mobile-menu" class="hidden md:hidden border-t border-[#2d3435]/5 bg-[#f9f9f9]/95 backdrop-blur-md px-8 py-6">
+    <nav aria-label="Mobile navigation">
+        <div class="flex flex-col gap-6">
+            <a class="{% if page.url == '/' or page.url == '/es/' %}text-[#4c6177] font-medium{% else %}text-[#2d3435]/60 hover:text-[#2d3435]{% endif %} font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/">{{ t.work }}</a>
+            <a class="{% if page.url contains 'about' %}text-[#4c6177] font-medium{% else %}text-[#2d3435]/60 hover:text-[#2d3435]{% endif %} font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/about/">{{ t.about }}</a>
+            <a class="{% if page.url contains 'contact' %}text-[#4c6177] font-medium{% else %}text-[#2d3435]/60 hover:text-[#2d3435]{% endif %} font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}{% if page.lang == 'es' %}/es{% endif %}/contact/">{{ t.contact }}</a>
+            <a class="text-[#2d3435]/60 hover:text-[#2d3435] font-body text-xs uppercase tracking-widest transition-colors duration-300" href="{{ site.baseurl }}/assets/CV_Boniche_Luis_java.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        </div>
+    </nav>
+</div>
+</nav>
+<script src="{{ site.baseurl }}/assets/js/mobile-menu.js" defer></script>

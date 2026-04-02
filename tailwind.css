@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles from main.css */
+.text-justify-architectural {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.text-tight {
+    letter-spacing: -0.02em;
+}
+
+.label-wide {
+    letter-spacing: 0.05em;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+}

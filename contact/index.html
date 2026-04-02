@@ -1,0 +1,18 @@
+---
+layout: default
+title: Contact
+lang: en
+---
+{% assign t = site.data.i18n[page.lang] %}
+<section class="py-24">
+<div class="max-w-2xl mx-auto">
+<span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-8 block">{{ t.contact }}</span>
+<h1 class="font-headline text-4xl md:text-5xl mb-8 text-on-surface text-center">Get in Touch</h1>
+<p class="font-body text-on-surface-variant leading-relaxed mb-12 text-center">
+    Have a question or want to work together? Fill out the form below and I'll get back to you as soon as possible.
+</p>
+
+{% include contact-form.html %}
+
+</div>
+</section>

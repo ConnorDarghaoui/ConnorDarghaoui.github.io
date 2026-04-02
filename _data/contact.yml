@@ -1,0 +1,3 @@
+# Cloudflare Worker URL para el formulario de contacto
+# Worker desplegado en Cloudflare Workers
+worker_url: "https://portfolio-contact-form.lhb-81d.workers.dev"

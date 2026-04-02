@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>{{ page.title }} — {{ site.title }}</title>
+    {% seo title=false %}
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/built.css"/>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-0tDuFVWpEJgKkFbPGhOvgqYIwJpYUeT3nqRv0vdxK1vYl9qjmqgRnlRkLn1zZU1w" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-tFu5uI6aRHJys98Cg0S1KlnjgVH3H7iwI2aVvqFvCJYlBvEJxzVlWv9B5EjVlY" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+/r6Xy6z9CXYd0JnNyGP9J4v3Dp0fKlCzpV2WcYhNaH0Cv5qT5nKv5vZ3v5z5T5" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              delimiters: [
+                  {left: "$$", right: "$$", display: true},
+                  {left: "$", right: "$", display: false},
+                  {left: "\\(", right: "\\)", display: false},
+                  {left: "\\[", right: "\\]", display: true}
+              ]
+          });
+      });
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+    {% include header.html %}
+    <main class="{% if page.url == '/' or page.url == '/es/' %}pt-32 pb-24 px-8 max-w-7xl mx-auto{% else %}pt-32 pb-24 px-8 md:px-16 lg:px-24 max-w-[1440px] mx-auto{% endif %}">
+        {{ content }}
+    </main>
+    {% include footer.html %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
+    <script>AOS.init({ duration: 800, once: true, offset: 50, disableMutationObserver: true });</script>
+
+    <!-- Kroki.io Architecture Diagram Renderer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" integrity="sha384-rNlaE5fs9dGIjmxWDALQh/RBAaGRYT5ChrzHo6tRfgrZ36iRFAiquP5g41Jsv+0j" crossorigin="anonymous"></script>
+    <script src="{{ site.baseurl }}/assets/js/kroki-renderer.js" defer></script>
+    <script src="{{ site.baseurl }}/assets/js/contact-form.js" defer></script>
+</body>
+</html>
