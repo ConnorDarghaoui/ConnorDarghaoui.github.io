@@ -236,16 +236,18 @@
     function init() {
         // Encontrar todos los artículos con contenido
         var articles = document.querySelectorAll('article');
-        var i, article, codeBlocks, j;
+        var i, article, codeBlocks, j, firstDiagramRendered;
 
         for (i = 0; i < articles.length; i++) {
             article = articles[i];
             codeBlocks = article.querySelectorAll('pre code');
+            firstDiagramRendered = false;
             
             for (j = 0; j < codeBlocks.length; j++) {
-                // El primer diagrama de cada artículo es portada
-                var isCover = (j === 0);
-                processDiagram(codeBlocks[j], isCover);
+                if (getDiagramType(codeBlocks[j])) {
+                    processDiagram(codeBlocks[j], !firstDiagramRendered);
+                    firstDiagramRendered = true;
+                }
             }
         }
 

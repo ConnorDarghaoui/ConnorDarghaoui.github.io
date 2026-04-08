@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Medallion Data Architecture"
-short_title: "01 / DATA INFRASTRUCTURE"
+short_title: "DATA INFRASTRUCTURE"
 image: "/assets/img/medallion.png"
 version: "v3.1.0"
 status: "ACTIVE"
@@ -11,18 +11,18 @@ metric2_label: "Framework"
 metric2_val: "Medallion Architecture"
 align: left
 lang: en
-order: 1
+order: 9
 ---
 Raw data is nothing but noise until someone decides to listen carefully. This system transforms that noise into signal, building a three-layer data lake (Bronze, Silver, Gold) where every record flows through a strict chain of refinement before it earns the right to inform a decision. Designed with Kafka for real-time ingestion, Spark for distributed transformation, and dbt for declarative business logic, the architecture became the shared foundation that multiple product teams trusted, and built upon, without hesitation.
 <!--more-->
 
-### The Burden of Truth
+### Introduction
 
 Before this architecture, truth wasn't a state of data; it was a negotiation between conflicting dashboards. The challenge was not lacking data, but lacking certainty. When organizational decisions of immense gravity rest on disjointed tables, hesitation becomes the default posture.
 
 This initiative stripped away the ad-hoc pipelines and replaced them with a rigid, inescapable methodology: The Medallion Architecture.
 
-### The Foundry: Bronze to Silver
+### Development: Bronze to Silver
 
 Raw events are erratic. They arrive out of order, corrupted, or duplicated. The first stage of our pipeline makes no attempt to fix them,it only traps them.
 
@@ -45,7 +45,7 @@ Spark --> Silver : Deduplicated & Validated
 
 The transition from Bronze to Silver is where anomalies go to die. Apache Spark enforces schemas mercilessly. If a record violates the core enterprise contract, it is quarantined. What emerges in the Silver layer is pristine, historical, and standardized data. It is not yet ready for the business to consume, but it is finally honest.
 
-### Shaping the Signal: Silver to Gold
+### Development: Silver to Gold
 
 Once the data is clean, it must be given purpose. This is where dbt (data build tool) assumes control, orchestrating transformations within Snowflake.
 
@@ -68,7 +68,7 @@ Gold --> Analytics : Governed Metrics
 
 Here, SQL is not treated as a query language, but as software engineering. Every business metric is version-controlled, tested, and documented. The Gold layer doesn't just present tables; it presents the *official* perspective of the organization.
 
-### The Complete Ecosystem
+### Conclusion
 
 When we step back, the entire choreography reveals its purpose. It's an immune system against bad data. By dividing concerns into immutable storage, distributed compute, and declarative modeling, we decoupled the analytical layer from operational fragility.
 

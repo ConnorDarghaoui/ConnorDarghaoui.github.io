@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Portal B2B Marketplace"
-short_title: "02 / MICROSERVICIOS"
+short_title: "MICROSERVICIOS"
 image: "/assets/img/microservices.png"
 version: "v4.0.2"
 status: "LIVE"
@@ -11,12 +11,12 @@ metric2_label: "Backend"
 metric2_val: "Quarkus / Vue 3"
 align: right
 lang: es
-order: 2
+order: 10
 ---
 Un monolito es un punto de orgullo, hasta que se convierte en un punto único de fallo. Esta migración desmanteló un sistema Spring Boot heredado pieza por pieza, reemplazando sus costuras rígidas con microservicios Quarkus capaces de respirar, escalar y fallar de forma independiente entre sí. El resultado fue una reducción del 25% en la latencia de respuesta, no como un accidente de optimización, sino como la consecuencia natural de construir algo arquitectónicamente honesto desde sus cimientos.
 <!--more-->
 
-### El Cuello de Botella Opresivo
+### Introducción
 
 El sistema heredado fue víctima de su propio éxito. Lo que comenzó como una aplicación Spring Boot cohesiva había crecido hasta convertirse en una red enmarañada de dominios interdependientes. Una oleada en el procesamiento de pedidos asfixiaba al catálogo de inventario, robándole ciclos de CPU. Una pequeña fuga de memoria en el módulo de facturación derribaba todo el marketplace.
 
@@ -41,7 +41,7 @@ database "BD Monolítica" as DB
 
 Los datos estaban acoplados. La computación era compartida. El proceso de despliegue se había vuelto un ejercicio de terror puro. No necesitábamos refactorizar el código; necesitábamos destrozar el paradigma.
 
-### La Liberación
+### Desarrollo
 
 El primer paso fue introducir un API Gateway, un escudo protector que nos permitiera estrangular al monolito paulatinamente. Al enrutar el tráfico de manera inteligente, pudimos vaciar el sistema heredado, migrando dominios de negocio aislados hacia runtimes Quarkus modernos y ligeros.
 
@@ -66,7 +66,7 @@ Gateway --> Auth : Ruta API Auth
 
 Quarkus no fue elegido por capricho. Sus mecánicas de arranque en tiempo de compilación y su insignificante consumo de memoria (diseñado orgánicamente para Kubernetes) significaban que nuestros nuevos servicios no solo escalaban, reaccionaban ante la demanda al instante.
 
-### La Coreografía Orientada a Eventos
+### Conclusión
 
 Una verdadera arquitectura de microservicios no trata solo de dividir código; trata de cambiar la comunicación de llamadas síncronas bloqueantes a una coreografía asíncrona fluida. Introdujimos un Broker de Eventos, asegurándonos de que los servicios ya no demandaran atención inmediata de sus pares. Simplemente anunciaban lo que había ocurrido, confiando en que el ecosistema reaccionaría en consecuencia.
 

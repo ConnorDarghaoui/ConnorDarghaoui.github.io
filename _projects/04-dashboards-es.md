@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Dashboards de Datos Operativos"
-short_title: "04 / AUTOMATIZACIÓN & BI"
+short_title: "AUTOMATIZACIÓN & BI"
 image: "/assets/img/dashboards.png"
 version: "v2.4.0"
 status: "OPTIMIZADO"
@@ -11,12 +11,12 @@ metric2_label: "Reportes"
 metric2_val: "Tableau Server"
 align: right
 lang: es
-order: 4
+order: 12
 ---
 Las decisiones tomadas sobre datos sucios no son decisiones, son apuestas. Este sistema enfrentó esa realidad de frente: pipelines automatizados en Python y SQL que limpian, normalizan y deduplican la información organizacional de manera implacable en el origen, mucho antes de que llegue a cualquier pantalla. Los dashboards de Tableau que emergieron de esa base no sólo muestran números, transmiten verdad operativa en tiempo real, dando a los stakeholders la claridad para actuar con convicción, en lugar de con instinto.
 <!--more-->
 
-### El Sistema de Filtración
+### Introducción
 
 Un dashboard es tan confiable como el pipeline que lo alimenta. Heredamos bases de datos fragmentadas donde los duplicados abundaban y la nomenclatura se imponía por opinión en lugar de por restricciones. El primer paso fue desplegar una capa ETL intransigente.
 
@@ -38,7 +38,7 @@ Python --> Staging : Carga
 
 Los scripts de Python actúan como la membrana de filtración. Al aprovechar Pandas para una deduplicación eficiente en memoria, nos aseguramos de que los errores ortográficos, las violaciones de nulos y los espacios en blanco deshonestos se manejaran a la defensiva. Los datos defectuosos quedan atrapados y se registran; sólo los datos estandarizados logran pasar a staging.
 
-### La Lente Semántica
+### Desarrollo
 
 Una vez que el dato está limpio, debe hablar el idioma del negocio. Una tabla plana de transacciones no significa nada para un ejecutivo. Estructuramos una Capa Semántica dentro del warehouse utilizando agregaciones SQL avanzadas, materializando la lógica compleja de las métricas para que la herramienta de BI no tenga que computarla al vuelo.
 
@@ -60,7 +60,7 @@ SQL --> Tableau : Extractos Optimizados
 
 Mover las matemáticas complejas hacia la capa de la base de datos significa que Tableau solo se enfoca en lo que hace mejor: renderizar el *insight* visual al instante. Dashboards que solían tardar 40 segundos en cargar ahora saltan a la vista en milisegundos.
 
-### La Infraestructura Analítica Completa
+### Conclusión
 
 Visto de forma holística, este no es solo un proyecto de reportes, es una fábrica automatizada que manufactura certeza. El sistema despierta, extrae el caos crudo, impone orden, calcula las métricas que importan, y las pinta sobre un lienzo antes de que el equipo ejecutivo tome su primera taza de café.
 

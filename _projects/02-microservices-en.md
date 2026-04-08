@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "B2B Marketplace Portal"
-short_title: "02 / MICROSERVICES"
+short_title: "MICROSERVICES"
 image: "/assets/img/microservices.png"
 version: "v4.0.2"
 status: "LIVE"
@@ -11,12 +11,12 @@ metric2_label: "Backend"
 metric2_val: "Quarkus / Vue 3"
 align: right
 lang: en
-order: 2
+order: 10
 ---
 A monolith is a single point of pride, until it becomes a single point of failure. This migration dismantled a legacy Spring Boot system piece by piece, replacing its rigid seams with Quarkus microservices that could breathe, scale, and fail independently of each other. The result was a 25% reduction in response latency, not as an accident of optimization, but as the natural consequence of building something architecturally honest from the ground up.
 <!--more-->
 
-### The Oppressive Bottleneck
+### Introduction
 
 The legacy system was a victim of its own success. What began as a cohesive Spring Boot application had grown into a tangled web of interdependent domains. A surge in order processing would starve the inventory catalog of CPU cycles. A minor memory leak in the billing module would bring the entire marketplace down. 
 
@@ -41,7 +41,7 @@ database "Monolithic DB" as DB
 
 The data was coupled. The compute was shared. The deployment process was an exercise in terror. We didn't need to refactor the code; we needed to shatter the paradigm.
 
-### The Liberation
+### Development
 
 The first step was to introduce an API Gateway,a protective shield that allowed us to strangle the monolith. By routing traffic intelligently, we could hollow out the legacy system entirely, migrating isolated business domains onto modern, lightweight Quarkus runtimes. 
 
@@ -66,7 +66,7 @@ Gateway --> Auth : Auth API Route
 
 Quarkus was not chosen on a whim. Its compile-time boot mechanics and low memory footprint (optimized for Kubernetes) meant our new services didn't just scale,they reacted instantly to demand.
 
-### The Event-Driven Choreography
+### Conclusion
 
 A true microservices architecture isn't just about splitting code; it's about shifting communication from synchronous blocking calls to asynchronous choreography. We introduced an Event Broker, ensuring that services no longer demanded immediate attention from one another. They simply announced what had happened, trusting the ecosystem to react.
 

@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Telegram NL2SQL Bot for Hardware Retail"
-short_title: "05 / NL2SQL, TELEGRAM BOT"
+short_title: "NL2SQL, TELEGRAM BOT"
 image: "/assets/img/llm-inventory.png"
 version: "v1.2.0"
 status: "DEPLOYED"
@@ -16,7 +16,7 @@ order: 5
 The inventory of a massive hardware supply chain doesn't speak SQL, but the owner checking his phone on a Sunday afternoon does. This system bridges that gap: a conversational Telegram bot where the business owner simply asks what they need to know, and an open-source DeepSeek-powered pipeline translates that intention into precise, executable SQL against their PostgreSQL database. Whether querying the average ticket size or identifying top buyers, it returns the truth in plain language within seconds. No dashboards to navigate. No queries to write. Just a chat, and an answer.
 <!--more-->
 
-### The Interpreter: From Message to Query
+### Introduction
 
 When the owner messages their Telegram bot asking, "What was the average ticket today and who bought the most power tools?", they rely on shared context. A database has no context. The first challenge is capturing the user's intent and injecting the necessary architectural context so the LLM can construct a valid query.
 
@@ -40,7 +40,7 @@ Parser -> Parser : Inject Context
 
 Instead of relying on proprietary closed models, we deployed DeepSeek,a highly capable open-source model,to act as our translation engine. The system performs a semantic search against `pgvector` to pull the precise DDL schema of the hardware inventory tables, along with few-shot examples of similar successful queries. It is essentially teaching DeepSeek how the company stores its data in the span of a few milliseconds before generating the SQL.
 
-### The Guardrails: Restraining the Machine
+### Development
 
 An LLM is a powerful reasoning engine, but it is also unpredictable. Giving an AI direct access to production data is an unacceptable risk unless strict, unyielding software borders are enforced. 
 
@@ -62,7 +62,7 @@ Guardrail --> DB : Execute Clean Query
 
 Before any query touches the database, it must survive the Guardrail phase. This parses the SQL Abstract Syntax Tree (AST) to ensure absolute compliance with read-only operations. The system is permitted to ask anything, but it is physically incapable of altering reality.
 
-### The Mathematical Boundary: Facts vs. Foresight
+### Conclusion
 
 There is a hard architectural rule in this system: **LLMs are for querying history, not predicting the future.** 
 

@@ -12,6 +12,10 @@
  * - #contact-form: Elemento form
  * - #form-status: Elemento para mensajes de estado
  * - data-worker-url: URL del Worker en el elemento form
+ *
+ * Efectos laterales:
+ * - Registra un listener de submit en #contact-form
+ * - Modifica texto, clases y estado disabled de elementos del formulario
  */
 
 (function() {
@@ -19,7 +23,17 @@
 
     /**
      * Mensajes de la UI por idioma
-     * @type {Object.<string, Object.<string, string>>}
+     * @typedef {Object} ContactMessages
+     * @property {string} required
+     * @property {string} success
+     * @property {string} error
+     * @property {string} emailDirect
+     * @property {string} sending
+     */
+
+    /**
+     * Mapa de mensajes por locale.
+     * @type {{ en: ContactMessages, es: ContactMessages }}
      */
     var MESSAGES = {
         en: {
@@ -73,6 +87,7 @@
      * @param {HTMLButtonElement} submitBtn - Botón de submit
      * @param {string} lang - Idioma actual
      * @returns {void}
+     * @throws {Error} Si la respuesta HTTP es inválida o el Worker devuelve error
      */
     function handleSubmit(e, form, statusEl, submitBtn, lang) {
         e.preventDefault();
@@ -119,7 +134,10 @@
             if (response.ok) {
                 return response.json();
             } else {
-                throw new Error('Network response was not ok');
+                return response.text().then(function(body) {
+                    var detail = body && body.trim() ? body.trim() : ('HTTP ' + response.status);
+                    throw new Error(detail);
+                });
             }
         })
         .then(function(data) {
@@ -160,6 +178,11 @@
 
         // Obtener idioma desde Liquid (se inyecta en el HTML)
         var lang = form.dataset.lang || 'en';
+
+        if (form.dataset.contactInitialized === 'true') {
+            return;
+        }
+        form.dataset.contactInitialized = 'true';
 
         form.addEventListener('submit', function(e) {
             handleSubmit(e, form, statusEl, submitBtn, lang);

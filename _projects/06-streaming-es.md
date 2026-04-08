@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Motor de Anomalías en Tiempo Real"
-short_title: "06 / STREAMING ANALYTICS"
+short_title: "STREAMING ANALYTICS"
 image: "/assets/img/streaming.png"
 version: "v2.1.0"
 status: "ACTIVO"
@@ -11,12 +11,12 @@ metric2_label: "Motor"
 metric2_val: "Apache Flink / Kafka"
 align: right
 lang: es
-order: 6
+order: 8
 ---
 Los datos en reposo son historia, los datos en movimiento son el presente. Durante años, la organización dependió del procesamiento por lotes nocturno para identificar fallos operativos, lo que significaba que solo descubríamos la hemorragia mucho después de que el daño ya estaba hecho. Este sistema erradica la demora. Al aprovechar Apache Flink y Kafka, construimos un motor de streaming con estado capaz de ingerir miles de eventos por segundo, evaluar ventanas de tiempo deslizantes y disparar alertas críticas en menos de 50 milisegundos. No es una herramienta analítica, es un acto reflejo.
 <!--more-->
 
-### La Corriente Indomable
+### Introducción
 
 Cuando se trata de flujos de alta velocidad (telemetría IoT, libros transaccionales o clics web), las bases de datos tradicionales se asfixian. El primer imperativo arquitectónico fue tratar el dato no como una simple fila que se almacena, sino como un río infinito y continuo.
 
@@ -37,7 +37,7 @@ Kafka --> Source : Consumo Particionado
 
 Apache Kafka actúa como un sistema nervioso indestructible. Absorbe picos de tráfico masivos y repentinos sin inmutarse, desacoplando la ruidosa y caótica realidad de la producción de los frágiles sistemas que intentan analizarla a posteriori.
 
-### La Ventana con Estado
+### Desarrollo
 
 El paradigma de streaming no trata solo de mover datos rápido, trata de retener memoria en el caos. Si un mismo usuario falla un inicio de sesión tres veces en diez segundos, eso es una anomalía. Pero, ¿cómo recuerdas los primeros dos fallos mientras procesas 10,000 eventos simultáneos más?
 
@@ -60,7 +60,7 @@ Window --> Alert : Umbral Superado
 
 Aquí brilla Apache Flink. Al usar RocksDB como backend de estado, el sistema mantiene el contexto exacto de cada transacción a lo largo de clústeres distribuidos. Calcula agregaciones sobre ventanas de tiempo rotativas (*tumbling*) y deslizantes (*sliding*) sin perder un solo contador durante una caída de nodo. Razona sobre el tiempo con rigor matemático.
 
-### El Ecosistema "Reflejo"
+### Conclusión
 
 Una verdadera arquitectura de análisis en streaming no termina con un hallazgo interesante, termina con una acción defensiva. Una vez que la anomalía es detectada en medio de la corriente, el sistema omite el Data Warehouse tradicional por completo, escribiendo directamente sobre una caché Redis de latencia ultrabaja desde donde los sistemas pueden leer la alerta casi al instante.
 

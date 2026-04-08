@@ -26,7 +26,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.2.8
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -44,6 +44,9 @@ jobs:
 
       - name: Build CSS
         run: bun run build:css
+
+      - name: Validate JSDoc
+        run: bun run validate:jsdoc
 
       - name: Build with Jekyll
         env:

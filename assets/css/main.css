@@ -33,3 +33,15 @@ article p {
     text-align: justify;
     text-justify: inter-word;
 }
+
+/* Contact form controls */
+#contact-form .form-input,
+#contact-form .form-textarea {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#contact-form .form-input:focus,
+#contact-form .form-textarea:focus {
+    outline: none;
+}

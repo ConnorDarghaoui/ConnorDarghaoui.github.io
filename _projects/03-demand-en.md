@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Demand Forecasting Engine"
-short_title: "03 / PREDICTIVE MODELING"
+short_title: "PREDICTIVE MODELING"
 image: "/assets/img/demand.png"
 version: "v1.8.9"
 status: "RUNNING"
@@ -11,12 +11,12 @@ metric2_label: "Engine"
 metric2_val: "PyMC / BigQuery"
 align: left
 lang: en
-order: 3
+order: 11
 ---
 Fifty million records don't lie, but without the right frame, they say nothing. This engine transforms raw transactional history into probabilistic foresight, modeling inventory demand through a Bayesian lens built on PyMC and orchestrated with MLflow. Where other systems guess linearly, this one reasons: it quantifies uncertainty, surfaces confidence intervals, and hands planners a number they can trust, not just believe.
 <!--more-->
 
-### The Data Harvester
+### Introduction
 
 Foresight cannot be generated from fragmented history. The first architectural mandate was to consolidate over 50 million disparate transactional records sitting across multiple enterprise systems.
 
@@ -39,7 +39,7 @@ ELT --> BQ : Aggregated Features (Lag, Seasonality)
 
 Google BigQuery acts as the immutable foundation,the Feature Store. Here, raw events are aggregated into structured time-series data: rolling windows, lag variables, and seasonality coefficients. The model doesn't just look at what sold; it looks at *how* it sold over time.
 
-### The Bayesian Oracle
+### Development
 
 Traditional machine learning produces point estimates,a single, rigid prediction. But reality is not rigid. A business doesn't just need to know that "we will sell 100 units"; it needs to know that "there is a 95% probability we will sell between 85 and 115 units." 
 
@@ -68,7 +68,7 @@ $$
 
 By treating demand as a probability distribution rather than a deterministic outcome, the system acknowledges the inherent chaos of the market. It calculates the *High Density Intervals (HDI)*, allowing planners to balance holding costs against stock-out risks mathematically, rather than emotionally.
 
-### The MLOps Automation Pipeline
+### Conclusion
 
 A model that lives on a data scientist's laptop is an academic exercise. A model that automatically retrains, versions itself, and deploys its predictions to production is an engineering asset.
 

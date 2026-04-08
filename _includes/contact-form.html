@@ -9,13 +9,13 @@
 <div>
 <label for="name" class="block font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-2">{% if lang == 'es' %}Nombre{% else %}Name{% endif %} *</label>
 <input type="text" id="name" name="name" required
-class="w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:outline-none transition-colors font-body text-on-surface"
+class="form-input w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 transition-colors font-body text-on-surface placeholder:text-on-surface-variant/70"
 placeholder="{% if lang == 'es' %}Tu nombre{% else %}Your name{% endif %}"/>
 </div>
 <div>
 <label for="email" class="block font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-2">Email *</label>
 <input type="email" id="email" name="email" required
-class="w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:outline-none transition-colors font-body text-on-surface"
+class="form-input w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 transition-colors font-body text-on-surface placeholder:text-on-surface-variant/70"
 placeholder="{% if lang == 'es' %}tu@email.com{% else %}your@email.com{% endif %}"/>
 </div>
 </div>
@@ -23,14 +23,14 @@ placeholder="{% if lang == 'es' %}tu@email.com{% else %}your@email.com{% endif %
 <div>
 <label for="subject" class="block font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-2">{% if lang == 'es' %}Asunto{% else %}Subject{% endif %}</label>
 <input type="text" id="subject" name="subject"
-class="w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:outline-none transition-colors font-body text-on-surface"
+class="form-input w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 transition-colors font-body text-on-surface placeholder:text-on-surface-variant/70"
 placeholder="{% if lang == 'es' %}Consulta sobre proyecto{% else %}Project inquiry{% endif %}"/>
 </div>
 
 <div>
 <label for="message" class="block font-label text-[10px] tracking-widest text-on-surface-variant uppercase mb-2">{% if lang == 'es' %}Mensaje{% else %}Message{% endif %} *</label>
 <textarea id="message" name="message" required rows="6"
-class="w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:outline-none transition-colors font-body text-on-surface resize-none"
+class="form-textarea w-full px-4 py-3 bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-1 focus:ring-secondary/20 transition-colors font-body text-on-surface resize-none placeholder:text-on-surface-variant/70"
 placeholder="{% if lang == 'es' %}Contame sobre tu proyecto...{% else %}Tell me about your project...{% endif %}"></textarea>
 </div>
 

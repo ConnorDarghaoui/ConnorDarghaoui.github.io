@@ -13,35 +13,44 @@
 
 export default {
   async fetch(request, env) {
-    // Validar Origin para prevenir abuso desde otros dominios
-    const allowedOrigin = 'https://connordarghaoui.github.io';
-    const origin = request.headers.get('Origin');
-    
-    // Permitir requests sin Origin (curl, testing) o del dominio permitido
-    if (origin && origin !== allowedOrigin) {
-      console.error('Blocked request from origin:', origin);
-      return new Response('Forbidden', { 
-        status: 403,
-        headers: { 'Content-Type': 'text/plain' }
+    const allowedOrigins = getAllowedOrigins(env);
+    // CORS headers para permitir peticiones desde el sitio
+    const baseCorsHeaders = {
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Vary': 'Origin',
+    };
+
+    // Handle preflight
+    if (request.method === 'OPTIONS') {
+      const origin = request.headers.get('Origin');
+      if (!isAllowedOrigin(origin, allowedOrigins)) {
+        return new Response('Forbidden', { status: 403, headers: baseCorsHeaders });
+      }
+      return new Response(null, {
+        status: 204,
+        headers: { ...baseCorsHeaders, 'Access-Control-Allow-Origin': origin }
       });
     }
 
     // Solo permitir POST
     if (request.method !== 'POST') {
-      return new Response('Method not allowed', { status: 405 });
+      return new Response('Method not allowed', {
+        status: 405,
+        headers: baseCorsHeaders
+      });
     }
 
-    // CORS headers para permitir peticiones desde el sitio
-    const corsHeaders = {
-      'Access-Control-Allow-Origin': allowedOrigin,
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    };
-
-    // Handle preflight
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { headers: corsHeaders });
+    // Validar Origin para prevenir abuso desde otros dominios
+    const origin = request.headers.get('Origin');
+    if (!isAllowedOrigin(origin, allowedOrigins)) {
+      console.error('Blocked request from origin:', origin || 'none');
+      return new Response('Forbidden', {
+        status: 403,
+        headers: baseCorsHeaders
+      });
     }
+    const corsHeaders = { ...baseCorsHeaders, 'Access-Control-Allow-Origin': origin };
 
     try {
       // Parsear datos del formulario
@@ -132,5 +141,42 @@ function escapeMarkdown(text) {
     .replace(/_/g, '\\_')
     .replace(/\*/g, '\\*')
     .replace(/\[/g, '\\[')
+    .replace(/\]/g, '\\]')
+    .replace(/\(/g, '\\(')
+    .replace(/\)/g, '\\)')
+    .replace(/~/g, '\\~')
+    .replace(/>/g, '\\>')
+    .replace(/#/g, '\\#')
+    .replace(/\+/g, '\\+')
+    .replace(/-/g, '\\-')
+    .replace(/=/g, '\\=')
+    .replace(/\|/g, '\\|')
+    .replace(/\{/g, '\\{')
+    .replace(/\}/g, '\\}')
+    .replace(/\./g, '\\.')
+    .replace(/!/g, '\\!')
     .replace(/`/g, '\\`');
+}
+
+function getAllowedOrigins(env) {
+  const raw = env.ALLOWED_ORIGINS || '';
+  const fromEnv = raw
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  if (fromEnv.length > 0) {
+    return fromEnv;
+  }
+
+  return [
+    'https://connordarghaoui.github.io',
+    'https://luisboniche.com',
+    'https://www.luisboniche.com'
+  ];
+}
+
+function isAllowedOrigin(origin, allowedOrigins) {
+  if (!origin) return false;
+  return allowedOrigins.includes(origin);
 }

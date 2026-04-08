@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "GitOps Cloud Infrastructure"
-short_title: "07 / CLOUD & GITOPS"
+short_title: "CLOUD & GITOPS"
 image: "/assets/img/infrastructure.png"
 version: "v3.0.0"
 status: "IMMUTABLE"
@@ -16,7 +16,7 @@ order: 7
 The cloud is not something you click; it is something you program. Before this initiative, deployments were a terrifying human ritual involving SSH keys, hidden configuration files, and the constant fear of downtime. This project eradicated the "snowflake" server. By declaring our entire infrastructure as code with Terraform and handing deployment authority over to a strict GitOps loop, we removed the human element from production entirely. We didn't just build faster servers; we engineered mathematical certainty into our deployments.
 <!--more-->
 
-### The Immutable Blueprint
+### Introduction
 
 Creating a server manually ensures that, eventually, no one knows exactly how it was built. This phenomenon, known as configuration drift, is a silent killer of modern architectures. The first step was to lock the keys to the kingdom inside a Git repository.
 
@@ -37,7 +37,7 @@ TF --> Cloud : Provision VPC, RDS, EKS
 
 Using Terraform, every Virtual Private Cloud, every load balancer, and every IAM role is explicitly defined in HCL (HashiCorp Configuration Language). If an engineer needs to open a firewall port, they do not touch the AWS console; they submit a pull request. The infrastructure is no longer a physical entity; it is a compiled software artifact.
 
-### The Deployment Controller
+### Development
 
 Provisioning the hardware is only half the battle. How do you deploy the microservices into that hardware without taking the system offline? The answer is GitOps.
 
@@ -59,7 +59,7 @@ GitOps --> GitOps : Continuous reconciliation
 
 Instead of a CI pipeline forcefully pushing code into the cluster (and hoping it succeeds), we flipped the paradigm. A GitOps controller sitting *inside* the Kubernetes cluster continuously watches the Git repository. If the repository changes, the controller automatically pulls the new Docker image and orchestrates a highly controlled Rolling Update. If health checks fail, it rolls back instantaneously. 
 
-### The Master Automation Ecosystem
+### Conclusion
 
 When you combine Infrastructure as Code with GitOps, you create an environment that heals itself. You can delete an entire Kubernetes cluster maliciously, and by simply pointing Terraform and ArgoCD at the master repository, the entire enterprise will reconstruct itself autonomously in minutes.
 

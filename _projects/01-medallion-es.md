@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Arquitectura de Datos Medallion"
-short_title: "01 / INFRAESTRUCTURA DE DATOS"
+short_title: "INFRAESTRUCTURA DE DATOS"
 image: "/assets/img/medallion.png"
 version: "v3.1.0"
 status: "ACTIVO"
@@ -11,18 +11,18 @@ metric2_label: "Framework"
 metric2_val: "Arquitectura Medallion"
 align: left
 lang: es
-order: 1
+order: 9
 ---
 El dato crudo no es más que ruido hasta que alguien decide escucharlo con rigor. Este sistema convierte ese ruido en señal, construyendo un lago de datos en tres capas (Bronce, Plata y Oro) donde cada registro atraviesa una cadena estricta de refinamiento antes de poder informar una decisión real. Diseñado con Kafka para la ingesta continua, Spark para la transformación distribuida y dbt para la lógica de negocio declarativa, la arquitectura se convirtió en la base compartida que múltiples equipos de producto adoptaron, y sobre la que construyeron, con plena confianza.
 <!--more-->
 
-### El Peso de la Verdad
+### Introducción
 
 Antes de esta arquitectura, la verdad no era un estado de los datos; era una negociación dolorosa entre dashboards conflictivos. El problema rara vez era la falta de datos, sino la falta de certeza. Cuando decisiones organizacionales de inmensa gravedad descansan sobre tablas desconectadas, la vacilación se convierte en la postura por defecto.
 
 Esta iniciativa arrancó de raíz los pipelines improvisados y los reemplazó con una metodología rígida e ineludible: La Arquitectura Medallion.
 
-### La Fundición: De Bronce a Plata
+### Desarrollo: De Bronce a Plata
 
 Los eventos crudos son erráticos. Llegan fuera de orden, corruptos o duplicados. La primera etapa de nuestro pipeline no hace un intento por arreglarlos, sólo los atrapa intactos.
 
@@ -45,7 +45,7 @@ Spark --> Silver : Deduplicados y Validados
 
 La transición de Bronce a Plata es donde mueren las anomalías. Apache Spark impone los esquemas sin piedad. Si un registro viola el contrato principal de la empresa, es puesto en cuarentena. Lo que emerge en la capa Plata es información prístina, histórica y estandarizada. Todavía no está lista para que el negocio la consuma, pero por primera vez, es completamente honesta.
 
-### Forjando la Señal: De Plata a Oro
+### Desarrollo: De Plata a Oro
 
 Una vez limpios, a los datos hay que darles un propósito. Aquí es donde dbt (data build tool) asume el control, orquestando transformaciones puramente declarativas dentro de Snowflake.
 
@@ -68,7 +68,7 @@ Gold --> Analytics : Métricas Gobernadas
 
 El SQL ya no se trata como un mero lenguaje de consulta, sino como ingeniería de software. Cada métrica de negocio tiene control de versiones, pruebas unitarias y documentación generada. La capa Oro no presenta tablas sueltas; presenta la *perspectiva oficial* y unificada de toda la organización.
 
-### El Ecosistema Completo
+### Conclusión
 
 Al dar un paso atrás, la coreografía entera revela su verdadero propósito. Es un sistema inmunológico contra los malos datos. Al dividir las responsabilidades en almacenamiento inmutable, computación distribuida y modelado declarativo, desacoplamos la fragilidad operativa del análisis de alto nivel.
 

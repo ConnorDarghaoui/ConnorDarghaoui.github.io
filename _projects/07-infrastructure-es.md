@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Infraestructura Cloud GitOps"
-short_title: "07 / CLOUD & GITOPS"
+short_title: "CLOUD & GITOPS"
 image: "/assets/img/infrastructure.png"
 version: "v3.0.0"
 status: "INMUTABLE"
@@ -16,7 +16,7 @@ order: 7
 La nube no es algo a lo que se le hace clic; es algo que se programa. Antes de esta iniciativa, los despliegues eran un ritual humano aterrador que involucraba llaves SSH, archivos de configuración ocultos y el miedo constante al tiempo de inactividad. Este proyecto erradicó el "servidor copo de nieve". Al declarar toda nuestra infraestructura como código con Terraform y entregar la autoridad de despliegue a un estricto ciclo GitOps, eliminamos por completo el factor humano de los entornos de producción. No solo construimos servidores más rápidos; le inyectamos precisión matemática e inmutabilidad a nuestra arquitectura.
 <!--more-->
 
-### El Plano Inmutable
+### Introducción
 
 Crear un servidor manualmente garantiza que, con el tiempo, nadie sepa exactamente cómo fue construido. Este fenómeno, conocido como "deriva de configuración" (*configuration drift*), es el asesino silencioso de la arquitectura moderna. El primer paso fue encerrar las llaves del reino dentro de un repositorio Git.
 
@@ -37,7 +37,7 @@ TF --> Cloud : Aprovisiona VPC, RDS, EKS
 
 Usando Terraform, cada Red Privada Virtual, cada balanceador de carga y cada rol de seguridad IAM está explícitamente definido en lenguaje HCL. Si un ingeniero necesita abrir un puerto en el firewall, no toca la consola de AWS; envía un Pull Request. La infraestructura ya no es una entidad física; es un artefacto de software compilado.
 
-### El Controlador de Despliegue
+### Desarrollo
 
 Aprovisionar el hardware es solo la mitad de la batalla. ¿Cómo despliegas los microservicios en ese hardware sin tumbar el sistema? La respuesta es GitOps.
 
@@ -59,7 +59,7 @@ GitOps --> GitOps : Reconciliación continua
 
 En lugar de tener un pipeline de CI empujando código agresivamente hacia el clúster (y rezando para que funcione), invertimos el paradigma. Un controlador GitOps, posicionado *dentro* del clúster de Kubernetes, observa continuamente el repositorio Git. Si el repositorio cambia, el controlador descarga automáticamente la nueva imagen y orquesta un *Rolling Update* milimétrico. Si las pruebas de salud fallan, revierte los cambios casi instantáneamente.
 
-### El Ecosistema Maestro de Automatización
+### Conclusión
 
 Cuando combinas la Infraestructura como Código (IaC) con GitOps, creas un entorno que se cura a sí mismo. Puedes eliminar un clúster entero de Kubernetes de forma maliciosa y, con solo apuntar Terraform y ArgoCD al repositorio maestro de Git, la empresa entera se reconstruirá de forma autónoma en cuestión de minutos.
 

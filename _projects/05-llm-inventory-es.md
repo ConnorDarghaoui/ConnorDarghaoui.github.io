@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Bot Telegram NL2SQL para Cadena de Herramientas"
-short_title: "05 / NL2SQL, TELEGRAM BOT"
+short_title: "NL2SQL, TELEGRAM BOT"
 image: "/assets/img/llm-inventory.png"
 version: "v1.2.0"
 status: "DESPLEGADO"
@@ -16,7 +16,7 @@ order: 5
 El inventario de una inmensa cadena de herramientas no habla en SQL, pero el dueño revisando su teléfono un domingo por la tarde sí habla en preguntas. Este sistema tiende ese puente: un bot conversacional en Telegram donde el empresario simplemente pregunta lo que necesita saber, y un pipeline impulsado por el modelo de código abierto DeepSeek traduce silenciosamente esa intención en SQL preciso sobre su base de datos PostgreSQL. Ya sea consultando el ticket promedio o a quién se le vendió más, devuelve la verdad en lenguaje natural en segundos. Sin dashboards que navegar. Sin queries que escribir. Solo un chat, y una respuesta.
 <!--more-->
 
-### El Intérprete: Del Mensaje a la Consulta
+### Introducción
 
 Cuando el dueño escribe en Telegram preguntando, "¿Cuál fue el ticket promedio hoy y quién compró más taladros?", se apoya en un contexto compartido. Una base de datos no tiene contexto. El primer desafío es capturar la intención del usuario e inyectar el contexto arquitectónico necesario para que el LLM pueda construir una consulta válida.
 
@@ -40,7 +40,7 @@ Parser -> Parser : Inyecta Contexto
 
 En lugar de depender de modelos propietarios cerrados (como el equivalente occidental a "Claude"), desplegamos **DeepSeek** ,un modelo de código abierto de altísima capacidad, para actuar como nuestro motor de traducción. El sistema realiza una búsqueda semántica contra `pgvector` para extraer el esquema correcto de las herramientas, junto con ejemplos *few-shot* de consultas anteriores. Esencialmente, educa al modelo sobre cómo la empresa almacena sus datos milisegundos antes de que genere el SQL.
 
-### Las Barreras de Contención: Limitando la Máquina
+### Desarrollo
 
 Un LLM es un motor de razonamiento formidable, pero también es impredecible. Darle a una IA acceso directo a datos de producción es un riesgo inaceptable a menos que se impongan fronteras estrictas e inquebrantables.
 
@@ -62,7 +62,7 @@ Guardrail --> DB : Ejecuta Consulta Limpia
 
 Antes de que cualquier consulta toque la base de datos, debe sobrevivir a la fase de Guardrail. Esto analiza el Árbol de Sintaxis Abstracta (AST) del SQL para asegurar un cumplimiento absoluto con operaciones de solo lectura. Al sistema se le permite preguntar cualquier cosa, pero es físicamente incapaz de alterar la realidad.
 
-### La Frontera Matemática: Hechos vs. Predicciones
+### Conclusión
 
 Hay una regla arquitectónica innegociable en este sistema: **Los LLMs son para consultar la historia, no para predecir el futuro.**
 
